@@ -1,0 +1,45 @@
+
+<div class="offset-1 col-10">
+  <h1 class="text-center">We make phrases and then we display them</h1>
+  <h4 class= "float-right">-Quiz 2</h4>
+  <br />
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary btn-lg add-button " data-toggle="modal" data-target="#exampleModal">
+    Add a new phrase
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <%= simple_form_for @phrase, url: phrases_path do |f| %>
+        <div class="modal-body">
+            <%= f.input :author %>
+            <%= f.input :sentence %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.submit 'Create', class: 'btn btn-primary' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <% @phrases.each do |phrase| %>
+        <div class="col-12 col-sm-4">
+          <div class="fancy">
+          <h3><%= phrase.sentence %></h3>
+          <h5>- <%= phrase.author %></h5>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+</div>
